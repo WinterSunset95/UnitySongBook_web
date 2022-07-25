@@ -2,37 +2,39 @@ import React from 'react'
 import { useState } from "react"
 import { useRouter } from 'next/router'
 
-export default function Song() {
-  const [data, setData] = useState([])
-  // Sorting function
-  function GetSortOrder(prop) {
-    return function(a, b) {
-      if(a[prop] > b[prop]) {
-        return 1
-      } else if(a[prop] < b[prop]) {
-        return -1
-      }
-      return 0
+function GetSortOrder(prop) {
+  return function(a, b) {
+    if(a[prop] > b[prop]) {
+      return 1
+    } else if(a[prop] < b[prop]) {
+      return -1
+    }
+    return 0
+  }
+}
+export const getServerSideProps = async (context) => {
+  const res = await fetch("https://wintersunset95.github.io/UnitySongBook/list.json")
+  const objList = await res.json()
+  objList.sort(GetSortOrder("num"))
+  return {
+    props: {
+      number: context.query.songNumber,
+      data: objList
     }
   }
-  async function getJson() {
-    const response = await fetch("https://wintersunset95.github.io/UnitySongBook/list.json")
-    const jsonDataRaw = await response.json()
-    jsonDataRaw.sort(GetSortOrder("num"))
-    setData(jsonDataRaw)
-    console.log(jsonDataRaw)
-  }
-  getJson()
-  const router = useRouter()
-  const {
-    query: {num},
-  } = router
-  const props = {num}
-  const songNumber = props.num
-  const songData = data.find(item => item.num === songNumber)
+}
+export default function Song(props) {
+  const [index, setIndex] = useState(0)
+  const songNumber = props.number
+  const list = props.data
+  const currentItem = list.find(item => {
+    return item.num == songNumber
+  })
+  const link = currentItem.link
+  console.log(index)
   return (
     <div>
-      This is the song page: {songNumber}
+      <img src={link} className="w-screen"/>
     </div>
   )
 }

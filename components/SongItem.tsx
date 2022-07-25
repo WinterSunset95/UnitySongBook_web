@@ -1,20 +1,11 @@
-import { React } from "react"
+import React from "react"
 import Link from 'next/link'
 import Router from 'next/router'
 
 export default function SongItem({title, composer, link, song, num}) {
-  function sendProps() {
-    Router.push({
-      pathname: '/song',
-      query: {
-        num
-      }
-    })
-  }
   return (
-    <a onClick={() => sendProps()}>
       <div className="flex flex-row justify-between m-4 border border-solid p-2 rounded-md shadow-md">
-        <div clasName="flex flex-column">
+        <div>
           <h3 className="text-2xl">
             {title}
           </h3>
@@ -22,6 +13,5 @@ export default function SongItem({title, composer, link, song, num}) {
         </div>
         <small>Song: {num}</small>
       </div>
-    </a>
   )
 }
