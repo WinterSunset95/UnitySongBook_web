@@ -2,7 +2,10 @@ import React from 'react'
 import { useState } from "react"
 import { useRouter } from 'next/router'
 import Image from 'next/image'
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faArrowLeft
+} from "@fortawesome/free-solid-svg-icons";
 function GetSortOrder(prop) {
   return function(a, b) {
     if(a[prop] > b[prop]) {
@@ -35,7 +38,17 @@ export default function Song(props:any) {
   console.log(index)
   return (
     <div>
-      <img src={link} className="w-screen" alt="Not found" />
+      <div className="shadow-md fixed w-full p-1 bg-white flex flex-column items-center">
+        <a href='/' className="flex items-center justify-start">
+          <FontAwesomeIcon
+            icon={faArrowLeft}
+            style={{ fontSize: 30, color: "black" }}
+            className="m-2"
+          />
+        </a>
+        <div className="text-xl ml-8">No. {songNumber}</div>
+      </div>
+      <img src={link} className="w-screen pt-14" alt="Not found" />
     </div>
   )
 }
