@@ -1,6 +1,7 @@
 import React from 'react'
 import { useState } from "react"
 import { useRouter } from 'next/router'
+import Image from 'next/image'
 
 function GetSortOrder(prop) {
   return function(a, b) {
@@ -34,7 +35,7 @@ export default function Song(props) {
   console.log(index)
   return (
     <div>
-      <img src={link} className="w-screen"/>
+      <Image src={link} className="w-screen" alt="Not found" />
     </div>
   )
 }
