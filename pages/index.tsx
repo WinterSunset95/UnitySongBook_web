@@ -35,7 +35,7 @@ const Home: NextPage = (props) => {
         {
           array.map((item) => {
             return (
-              <li>
+              <li key={item.title}>
               <Link href={{
                 pathname: "/song",
                 query: {
@@ -43,7 +43,7 @@ const Home: NextPage = (props) => {
                 }
               }}>
                 <a>
-                  <SongItem key={item.title} title={item.title} composer={item.composer} link={item.link} song={item.song} num={item.num}/>
+                  <SongItem title={item.title} composer={item.composer} link={item.link} song={item.song} num={item.num}/>
                 </a>
               </Link>    
               </li>
