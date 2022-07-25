@@ -35,7 +35,7 @@ export default function Song(props:any) {
   console.log(index)
   return (
     <div>
-      <Image src={link} className="w-screen" alt="Not found" />
+      <img src={link} className="w-screen" alt="Not found" />
     </div>
   )
 }
