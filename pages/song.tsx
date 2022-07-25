@@ -1,6 +1,7 @@
 import React from 'react'
 import { useState } from "react"
 import { useRouter } from 'next/router'
+import Link from 'next/link'
 import Image from 'next/image'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -39,13 +40,13 @@ export default function Song(props:any) {
   return (
     <div>
       <div className="shadow-md fixed w-full p-1 bg-white flex flex-column items-center">
-        <a href='/' className="flex items-center justify-start">
+        <Link href='/' className="flex items-center justify-start">
           <FontAwesomeIcon
             icon={faArrowLeft}
             style={{ fontSize: 30, color: "black" }}
             className="m-2"
           />
-        </a>
+        </Link>
         <div className="text-xl ml-8">No. {songNumber}</div>
       </div>
       <img src={link} className="w-screen pt-14" alt="Not found" />
