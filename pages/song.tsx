@@ -24,7 +24,7 @@ export const getServerSideProps = async (context) => {
     }
   }
 }
-export default function Song(props) {
+export default function Song(props:any) {
   const [index, setIndex] = useState(0)
   const songNumber = props.number
   const list = props.data

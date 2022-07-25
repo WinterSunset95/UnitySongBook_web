@@ -1,15 +1,11 @@
 import type { NextPage } from 'next'
-import { useState, useEffect } from 'react'
-import Head from 'next/head'
-import Image from 'next/image'
 import Link from 'next/link'
-import styles from '../styles/Home.module.css'
 import Header from '../components/Header'
 import SongItem from '../components/SongItem'
 
 // Sorting function
-function GetSortOrder(prop) {
-  return function(a, b) {
+function GetSortOrder(prop:any) {
+  return function(a:any, b:any) {
     if(a[prop] > b[prop]) {
       return 1
     } else if(a[prop] < b[prop]) {
@@ -26,14 +22,14 @@ export const getStaticProps = async () => {
     props: { array: jsonDataRaw }
   }  
 }
-const Home: NextPage = (props) => {
+const Home = (props:any) => {
   const array = props.array  
   return (
     <div>
       <Header />
       <ul className="pt-20">
         {
-          array.map((item) => {
+          array.map((item:any) => {
             return (
               <li key={item.title}>
               <Link href={{
