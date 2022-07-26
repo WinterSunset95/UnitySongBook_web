@@ -40,7 +40,7 @@ const Home = (props:any) => {
     if (inputElement === null) {
       console.log(inputElement)
     } else {
-    const domElem:any = inputElement.value
+    const domElem = (inputElement as HTMLInputElement).value
     const new_arr = []
     for (let i = 0; i < fulldata.length; i++) {
       const item = fulldata[i]
