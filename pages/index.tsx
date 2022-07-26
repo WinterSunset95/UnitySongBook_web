@@ -37,7 +37,6 @@ const Home = (props:any) => {
   const [text, setText] = useState("")
   const search = () => {
     const inputElement = document.getElementById("search-bar")
-    inputElement.nodeName
     if (inputElement === null) {
       console.log(inputElement)
     } else {
