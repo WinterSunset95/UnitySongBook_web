@@ -2,7 +2,7 @@ import React from "react"
 import Link from 'next/link'
 import Router from 'next/router'
 
-const SongItem: React.FC<props> = ({title, composer, link, song, num, render}) => {
+const SongItem: React.FC = ({title, composer, link, song, num, render}) => {
   if (render === true) {
     return (
       <div className="flex flex-row justify-between m-4 border border-solid p-2 rounded-lg shadow-md">
