@@ -36,7 +36,11 @@ const Home = (props:any) => {
   const [array, setArray] = useState(props.array)
   const [text, setText] = useState("")
   const search = () => {
-    const inputElement:any = document.getElementById("search-bar")!
+    const inputElement = document.getElementById("search-bar")
+    inputElement.nodeName
+    if (inputElement === null) {
+      console.log(inputElement)
+    } else {
     const domElem:any = inputElement.value
     const new_arr = []
     for (let i = 0; i < fulldata.length; i++) {
@@ -52,6 +56,7 @@ const Home = (props:any) => {
       }
     }
     setArray(new_arr)
+    }
   }
   return (
     <div>
