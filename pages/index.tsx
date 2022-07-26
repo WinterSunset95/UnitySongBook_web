@@ -41,7 +41,7 @@ const Home = (props:any) => {
       console.log(inputElement)
     } else {
     const domElem = (inputElement as HTMLInputElement).value
-    const new_arr = []
+    const new_arr:any = []
     for (let i = 0; i < fulldata.length; i++) {
       const item:any = fulldata[i]
       const search_text = domElem.toLowerCase()
