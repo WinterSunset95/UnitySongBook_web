@@ -19,7 +19,7 @@ function GetSortOrder(prop:any) {
     return 0
   }
 }
-export const getStaticProps = async () => {
+export const getServerSideProps = async () => {
   const response = await fetch("https://wintersunset95.github.io/UnitySongBook/list.json")
   const jsonDataRaw = await response.json()
   jsonDataRaw.sort(GetSortOrder("title"))
