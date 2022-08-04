@@ -29,14 +29,33 @@ export const getServerSideProps = async (context) => {
   }
 }
 export default function Song(props:any) {
-  const songNumber = props.number
+  const [songnumber, setSongnumber] = useState(props.number)
   const list = props.data
   const originalItem = list.find(item => {
-    return item.num == songNumber
+    return item.num == songnumber
   })
   const [index, setIndex] = useState(list.indexOf(originalItem))
   const currentItem = list[index]
   const link = currentItem.link
+  const myNum = currentItem.num
+  const change = (dir:any) => {
+    if (dir == "right") {
+      console.log(dir)
+      if (index < list.length - 1) {
+        setIndex(index + 1)
+      } else {
+        setIndex(index)
+      }
+    }
+    else {
+      console.log(dir)
+      if (index > 0) {
+        setIndex(index - 1)
+      } else {
+        setIndex(index)
+      }
+    }
+  }
   const router = useRouter()
   return (
     <div>
@@ -48,9 +67,11 @@ export default function Song(props:any) {
             className="m-2"
           />
         </div>
-        <div className="text-xl ml-8">No. {songNumber}</div>
+        <div className="text-xl ml-8">No. {songnumber}</div>
       </div>
-      <img src={link} className="w-screen pt-14" alt="Not found" id="main-image"/>
+      <div onClick={() => change("left")} className="fixed h-screen w-1/5 left-0"></div>
+      <div onClick={() => change("right")} className="fixed h-screen w-1/5 right-0"></div>
+      <img src={link} className="w-screen pt-14" alt="Not found" id="main-image" onLoad={() => setSongnumber(myNum)}/>
     </div>
   )
 }
