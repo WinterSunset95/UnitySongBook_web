@@ -29,14 +29,14 @@ export const getServerSideProps = async (context) => {
   }
 }
 export default function Song(props:any) {
-  const [index, setIndex] = useState(0)
   const songNumber = props.number
   const list = props.data
-  const currentItem = list.find(item => {
+  const originalItem = list.find(item => {
     return item.num == songNumber
   })
+  const [index, setIndex] = useState(list.indexOf(originalItem))
+  const currentItem = list[index]
   const link = currentItem.link
-  console.log(index)
   return (
     <div>
       <div className="shadow-md fixed w-full p-1 bg-white flex flex-column items-center">
@@ -49,7 +49,7 @@ export default function Song(props:any) {
         </Link>
         <div className="text-xl ml-8">No. {songNumber}</div>
       </div>
-      <img src={link} className="w-screen pt-14" alt="Not found" />
+      <img src={link} className="w-screen pt-14" alt="Not found" id="main-image"/>
     </div>
   )
 }
