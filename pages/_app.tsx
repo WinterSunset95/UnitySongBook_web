@@ -23,7 +23,7 @@ const App = ({ Component, pageProps }: AppProps) => {
   return (
     <>
       <Loading loading={loading} />
-      <Component {...pageProps} />;
+      <Component {...pageProps} />
     </>
   ) 
 };

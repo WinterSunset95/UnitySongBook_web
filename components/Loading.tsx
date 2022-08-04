@@ -2,7 +2,7 @@
 const Loading = (props:any) => {
   if (props.loading) {
     return (
-      <div className="fixed h-screen w-screen inset-0 flex justify-center items-center backdrop-blur-3xl">
+      <div className="z-50 fixed h-screen w-screen inset-0 flex justify-center items-center backdrop-blur-3xl">
         <div className="
           animate-spin 
           inline-block 

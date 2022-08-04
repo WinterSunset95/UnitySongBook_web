@@ -37,16 +37,17 @@ export default function Song(props:any) {
   const [index, setIndex] = useState(list.indexOf(originalItem))
   const currentItem = list[index]
   const link = currentItem.link
+  const router = useRouter()
   return (
     <div>
       <div className="shadow-md fixed w-full p-1 bg-white flex flex-column items-center">
-        <Link href='/' className="flex items-center justify-start">
+        <div onClick={() => router.back()} className="flex items-center justify-start">
           <FontAwesomeIcon
             icon={faArrowLeft}
             style={{ fontSize: 30, color: "black" }}
             className="m-2"
           />
-        </Link>
+        </div>
         <div className="text-xl ml-8">No. {songNumber}</div>
       </div>
       <img src={link} className="w-screen pt-14" alt="Not found" id="main-image"/>
