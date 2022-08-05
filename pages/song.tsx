@@ -59,7 +59,7 @@ export default function Song(props:any) {
   const router = useRouter()
   return (
     <div>
-      <div className="shadow-md fixed w-full p-1 bg-white flex flex-column items-center">
+      <div className="shadow-md fixed z-10 w-full p-1 bg-white flex flex-column items-center">
         <div onClick={() => router.back()} className="flex items-center justify-start">
           <FontAwesomeIcon
             icon={faArrowLeft}
