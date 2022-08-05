@@ -30,6 +30,7 @@ export const getServerSideProps = async (context) => {
 }
 export default function Song(props:any) {
   const [songnumber, setSongnumber] = useState(props.number)
+  const [loading, setLoading] = useState("scale-0")
   const list = props.data
   const originalItem = list.find(item => {
     return item.num == songnumber
@@ -39,6 +40,7 @@ export default function Song(props:any) {
   const link = currentItem.link
   const myNum = currentItem.num
   const change = (dir:any) => {
+    setLoading("scale-1")
     if (dir == "right") {
       console.log(dir)
       if (index < list.length - 1) {
@@ -57,6 +59,10 @@ export default function Song(props:any) {
     }
   }
   const router = useRouter()
+  const imgLoad = () => {
+    setSongnumber(myNum)
+    setLoading("scale-0")
+  }
   return (
     <div>
       <div className="shadow-md fixed z-10 w-full p-1 bg-white flex flex-column items-center">
@@ -69,9 +75,26 @@ export default function Song(props:any) {
         </div>
         <div className="text-xl ml-8">No. {songnumber}</div>
       </div>
-      <div onClick={() => change("left")} className="fixed h-screen w-1/5 left-0"></div>
-      <div onClick={() => change("right")} className="fixed h-screen w-1/5 right-0"></div>
-      <img src={link} className="w-screen pt-14" alt="Not found" id="main-image" onLoad={() => setSongnumber(myNum)}/>
+      <div id="loading" className={`transition-all duration-500 fixed ${loading}`}>
+        <div className="z-20 backdrop-opacity-100 flex h-screen w-screen justify-center items-center backdrop-blur-3xl">
+          <div
+            className="
+              animate-spin 
+              inline-block 
+              w-20
+              h-20 
+              border-t-8
+              border-l-7
+              border-r-7
+              border-purple-500
+              rounded-full
+            "
+            ></div>
+        </div>
+      </div>
+      <div onClick={() => change("left")} className="z-50 fixed h-screen w-1/5 left-0"></div>
+      <div onClick={() => change("right")} className="z-50 fixed h-screen w-1/5 right-0"></div>
+      <img src={link} className="w-screen pt-14" alt="Not found" id="main-image" onLoad={() => imgLoad()}/>
     </div>
   )
 }
