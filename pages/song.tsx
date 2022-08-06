@@ -65,7 +65,7 @@ export default function Song(props:any) {
   }
   return (
     <div>
-      <div className="shadow-md fixed z-10 w-full p-1 bg-white flex flex-column items-center">
+      <div className="shadow-md fixed z-20 w-full p-1 bg-white flex flex-column items-center">
         <div onClick={() => router.back()} className="flex items-center justify-start">
           <FontAwesomeIcon
             icon={faArrowLeft}
@@ -92,8 +92,8 @@ export default function Song(props:any) {
             ></div>
         </div>
       </div>
-      <div onClick={() => change("left")} className="z-50 fixed h-screen w-1/5 left-0"></div>
-      <div onClick={() => change("right")} className="z-50 fixed h-screen w-1/5 right-0"></div>
+      <div onClick={() => change("left")} className="z-10 fixed h-screen w-1/5 left-0"></div>
+      <div onClick={() => change("right")} className="z-10 fixed h-screen w-1/5 right-0"></div>
       <img src={link} className="w-screen pt-14" alt="Not found" id="main-image" onLoad={() => imgLoad()}/>
     </div>
   )
